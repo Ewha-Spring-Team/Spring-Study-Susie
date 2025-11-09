@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루살이 게시판 - 오늘의 글쓰기</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title {
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        input[type="text"], textarea, input[type="datetime-local"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, textarea:focus, input[type="datetime-local"]:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+        textarea {
+            height: 200px;
+            resize: vertical;
+        }
+        .btn {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #ff5252;
+        }
+        .alert {
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        .alert-error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info-box {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            color: #ff6b6b;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">🦋 하루살이 게시판</h1>
+        <p class="subtitle">오늘의 단 하나의 주제, 내일이면 사라진다</p>
+    </div>
+
+    {{#error}}
+    <div class="alert alert-error">
+        {{error}}
+    </div>
+    {{/error}}
+
+    <div class="form-container">
+        <div class="info-box">
+            <strong>📝 하루살이 게시판 규칙</strong><br>
+            • 하루에 단 한 명만 게시글을 작성할 수 있습니다<br>
+            • 어제 작성하신 분은 오늘 작성할 수 없습니다<br>
+            • 작성자가 지정한 시간에 게시판이 초기화됩니다<br>
+            • 당신이 오늘의 "시간 신"이 될 수 있습니다! 😈
+        </div>
+
+        <form action="/posts" method="post">
+            <div class="form-group">
+                <label for="authorId">작성자 ID *</label>
+                <input type="text" id="authorId" name="authorId" required 
+                       placeholder="오늘의 주인공이 될 당신의 ID를 입력하세요">
+            </div>
+
+            <div class="form-group">
+                <label for="title">제목 *</label>
+                <input type="text" id="title" name="title" required 
+                       placeholder="오늘의 화제가 될 제목을 적어주세요">
+            </div>
+
+            <div class="form-group">
+                <label for="content">내용 *</label>
+                <textarea id="content" name="content" required 
+                          placeholder="오늘 하루 사람들과 나누고 싶은 이야기를 써주세요..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="resetTime">초기화 시간 (선택사항)</label>
+                <input type="datetime-local" id="resetTime" name="resetTime">
+                <small style="color: #666;">
+                    미입력시 내일 오전 9시에 자동 초기화됩니다. 
+                    당신만이 아는 비밀스러운 시간을 설정해보세요! 🕐
+                </small>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn">🚀 오늘의 게시글 작성하기</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="nav-links">
+        <a href="/posts">📚 과거 게시글 보기</a>
+    </div>
+</body>
+</html>
