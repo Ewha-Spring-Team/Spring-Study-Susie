@@ -1,0 +1,163 @@
+<!-- 댓글 아이템 템플릿 -->
+<div class="comment-item comment-depth-{{depth}}">
+    <div class="comment-header">
+        <div>
+            <span class="comment-author">{{authorId}}</span>
+            {{#depth}}
+            <span class="comment-depth-badge">{{depth}}단계</span>
+            {{/depth}}
+        </div>
+        <span class="comment-date">{{createdAt}}</span>
+    </div>
+    
+    {{#deleted}}
+    <div class="comment-content deleted-comment">
+        🗑️ 삭제된 댓글입니다
+    </div>
+    {{/deleted}}
+    {{^deleted}}
+    <div class="comment-content">{{content}}</div>
+    
+    <!-- 답글 작성 버튼 (최대 깊이 5까지) -->
+    {{#canReply}}
+    <div class="comment-actions">
+        <button class="btn-reply" onclick="toggleReplyForm({{id}})">↩️ 답글</button>
+    </div>
+    
+    <!-- 답글 작성 폼 (숨김 상태) -->
+    <div id="reply-form-{{id}}" class="reply-form" style="display: none;">
+        <form action="/posts/{{postId}}/comments/{{id}}/reply" method="post">
+            <div class="form-group">
+                <label for="reply-author-{{id}}">닉네임</label>
+                <input type="text" id="reply-author-{{id}}" name="authorId" required 
+                       placeholder="익명의 답글러" maxlength="50">
+            </div>
+            <div class="form-group">
+                <label for="reply-content-{{id}}">답글 내용</label>
+                <textarea id="reply-content-{{id}}" name="content" required 
+                          placeholder="{{authorId}}님에게 답글을 남겨보세요..." 
+                          maxlength="1000" rows="3"></textarea>
+            </div>
+            <div class="reply-actions">
+                <button type="submit" class="btn-reply-submit">💬 답글 달기</button>
+                <button type="button" class="btn-cancel" onclick="toggleReplyForm({{id}})">취소</button>
+            </div>
+        </form>
+    </div>
+    {{/canReply}}
+    {{/deleted}}
+</div>
+
+<!-- 자식 댓글들을 재귀적으로 표시 -->
+{{#children}}
+{{>comment_item}}
+{{/children}}
+
+<style>
+.comment-depth-badge {
+    background: #ff6b6b;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.7em;
+    margin-left: 5px;
+}
+
+.deleted-comment {
+    color: #999;
+    font-style: italic;
+}
+
+.comment-actions {
+    margin-top: 10px;
+}
+
+.btn-reply {
+    background: #e9ecef;
+    color: #495057;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-reply:hover {
+    background: #dee2e6;
+}
+
+.reply-form {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 3px solid #ff6b6b;
+}
+
+.reply-form .form-group {
+    margin-bottom: 10px;
+}
+
+.reply-form label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333;
+}
+
+.reply-form input[type="text"],
+.reply-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+.reply-actions {
+    margin-top: 10px;
+}
+
+.btn-reply-submit {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8em;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-cancel {
+    background-color: #6c757d;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.btn-reply-submit:hover {
+    background-color: #ff5252;
+}
+
+.btn-cancel:hover {
+    background-color: #5a6268;
+}
+</style>
+
+<script>
+function toggleReplyForm(commentId) {
+    const replyForm = document.getElementById('reply-form-' + commentId);
+    if (replyForm.style.display === 'none' || replyForm.style.display === '') {
+        replyForm.style.display = 'block';
+    } else {
+        replyForm.style.display = 'none';
+    }
+}
+</script>

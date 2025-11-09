@@ -1,0 +1,12 @@
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/SpringStudySusieApplication.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/controller/CommentController.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/controller/FirstController.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/controller/PostController.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/dto/CommentDto.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/dto/PostDto.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/entity/Comment.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/entity/Post.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/repository/CommentRepository.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/repository/PostRepository.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/service/CommentService.java
+/Users/susie/Desktop/Temp_Laptop3/Java_Files/Yn/ewha/25_1_Breeze_study/Spring-Study-Susie/src/main/java/io/github/ewhaspringteam/spring_study_susie/service/PostService.java
